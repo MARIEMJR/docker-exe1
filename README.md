@@ -21,3 +21,21 @@ Ensuite a l'interieur du container
   `echo "WARNING: ret pointer is null" > test.py`
 
 A partir de ce container créer une image nommée  myalpine:v12.
+
+`docker commit myalpes myalpine:v12`
+
+* Supprimer les metadata de cette image avec docker export et docker import
+
+  ` docker export myalpes > myalpine_v12.tar`
+
+  `cat myalpine_v12.tar | sudo docker import - alpine:v12_new`
+
+ * mettez cette image dans docker hub sous votre compte docker hub 
+
+`docker login -u <docker_hub_account> -p <password>`
+
+`docker pull alpine`
+
+`docker image tag alpine <docker_hub_account>/myalpine`
+
+`docker push <docker_hub_account>/myalpine`
